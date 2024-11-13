@@ -9,7 +9,8 @@ export const inputSpec = InputSpec.of({
     name: 'Name',
     description:
       'When you launch the Hello World UI, it will display "Hello [Name]"',
-    required: { default: 'World' },
+    required: true,
+    default: 'World',
   }),
 })
 
