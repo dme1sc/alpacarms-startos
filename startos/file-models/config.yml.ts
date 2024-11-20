@@ -2,7 +2,7 @@ import { matches, FileHelper } from '@start9labs/start-sdk'
 const { object, string } = matches
 
 const shape = object({
-  name: string,
+  name: string.optional().onMismatch(undefined),
 })
 
 export const yamlFile = FileHelper.yaml(
