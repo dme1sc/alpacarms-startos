@@ -32,7 +32,7 @@ export const setName = sdk.Action.withInput(
   inputSpec,
 
   // optionally pre-fill the input form
-  ({ effects }) => yamlFile.read.const(effects),
+  async ({ effects }) => yamlFile.read.const(effects),
 
   // the execution function
   async ({ effects, input }) => {

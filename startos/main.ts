@@ -25,18 +25,17 @@ export const main = sdk.setupMain(async ({ effects, started }) => {
    * Each daemon defines its own health check, which can optionally be exposed to the user.
    */
   return sdk.Daemons.of(effects, started, healthReceipts).addDaemon('primary', {
-    image: { id: 'hello-world' }, // Must match an Image ID declared in the manifest.
-    command: ['hello-world'], // The command to start the daemon.
-    mounts: sdk.Mounts.of().addVolume('main', null, '/data', false), // Mount necessary volumes. ID must match manifest declaration.
+    image: { id: 'hello-world' },
+    command: ['hello-world'],
+    mounts: sdk.Mounts.of().addVolume('main', null, '/data', false),
     ready: {
-      display: 'Web Interface', // If null, the health check will NOT be displayed to the user. If provided, this string will be the name of the health check and displayed to the user.
-      // A function below determines the health status of this daemon
+      display: 'Web Interface',
       fn: () =>
         sdk.healthCheck.checkPortListening(effects, uiPort, {
           successMessage: 'The web interface is ready',
           errorMessage: 'The web interface is not ready',
         }),
     },
-    requires: [], // If this daemon depends on the successful initialization of one or more prior daemons, enter their IDs here.
+    requires: [],
   })
 })
