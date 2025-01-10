@@ -4,7 +4,6 @@ A bare bones project serving as a template for [StartOS Service Packaging](https
 
 ## Building from source
 
-`npm i`
 `make`
 
 ## Creating your own project
