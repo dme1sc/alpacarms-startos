@@ -11,7 +11,6 @@ export const setInterfaces = sdk.setupInterfaces(async ({ effects }) => {
     id: 'ui',
     description: 'The web interface of Hello World',
     type: 'ui',
-    hasPrimary: false,
     masked: false,
     schemeOverride: null,
     username: null,
