@@ -1,4 +1,4 @@
-PACKAGE_ID := hello-world
+PACKAGE_ID := $(shell grep -o "id: '[^']*'" startos/manifest.ts | sed "s/id: '\([^']*\)'/\1/")
 
 # Phony targets
 .PHONY: all clean install
