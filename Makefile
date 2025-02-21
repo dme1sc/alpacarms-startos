@@ -5,6 +5,8 @@ PACKAGE_ID := $(shell grep -o "id: '[^']*'" startos/manifest.ts | sed "s/id: '\(
 
 # Default target
 all: ${PACKAGE_ID}.s9pk
+	@echo " Done!"
+	@echo "   Filesize: $(shell du -h $(PACKAGE_ID).s9pk) is ready"
 
 # Build targets
 ${PACKAGE_ID}.s9pk: $(shell start-cli s9pk list-ingredients)
