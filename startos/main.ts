@@ -1,5 +1,5 @@
 import { sdk } from './sdk'
-import { T } from '@start9labs/start-sdk'
+import { health } from '@start9labs/start-sdk'
 import { uiPort } from './utils'
 
 export const main = sdk.setupMain(async ({ effects, started }) => {
@@ -15,7 +15,7 @@ export const main = sdk.setupMain(async ({ effects, started }) => {
    *
    * In this section, we define *additional* health checks beyond those included with each daemon (below).
    */
-  const healthReceipts: T.HealthReceipt[] = []
+  const additionalChecks: health.HealthCheck[] = []
 
   /**
    * ======================== Daemons ========================
@@ -24,18 +24,21 @@ export const main = sdk.setupMain(async ({ effects, started }) => {
    *
    * Each daemon defines its own health check, which can optionally be exposed to the user.
    */
-  return sdk.Daemons.of(effects, started, healthReceipts).addDaemon('primary', {
-    subcontainer: { imageId: 'hello-world' },
-    command: ['hello-world'],
-    mounts: sdk.Mounts.of().addVolume('main', null, '/data', false),
-    ready: {
-      display: 'Web Interface',
-      fn: () =>
-        sdk.healthCheck.checkPortListening(effects, uiPort, {
-          successMessage: 'The web interface is ready',
-          errorMessage: 'The web interface is not ready',
-        }),
+  return sdk.Daemons.of(effects, started, additionalChecks).addDaemon(
+    'primary',
+    {
+      subcontainer: { imageId: 'hello-world' },
+      command: ['hello-world'],
+      mounts: sdk.Mounts.of().addVolume('main', null, '/data', false),
+      ready: {
+        display: 'Web Interface',
+        fn: () =>
+          sdk.healthCheck.checkPortListening(effects, uiPort, {
+            successMessage: 'The web interface is ready',
+            errorMessage: 'The web interface is not ready',
+          }),
+      },
+      requires: [],
     },
-    requires: [],
-  })
+  )
 })
