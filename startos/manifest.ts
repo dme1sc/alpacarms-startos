@@ -13,7 +13,6 @@ export const manifest = setupManifest({
     short: 'Bare bones example of a StartOS service',
     long: 'Hello World is a template service that provides examples of basic StartOS features.',
   },
-  assets: [],
   volumes: ['main'],
   images: {
     'hello-world': {
