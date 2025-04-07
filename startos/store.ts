@@ -25,6 +25,11 @@ export type Store = {
   nameLastUpdatedAt: string | null
 }
 
+export const initStore: Store = {
+  secretPhrase: 'thisIsASecret',
+  nameLastUpdatedAt: null,
+}
+
 export const exposedStore = setupExposeStore<Store>((pathBuilder) => [
   pathBuilder.nameLastUpdatedAt,
 ])

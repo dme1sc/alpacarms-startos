@@ -1,5 +1,5 @@
 import { sdk } from './sdk'
-import { exposedStore } from './store'
+import { exposedStore, initStore } from './store'
 import { setDependencies } from './dependencies'
 import { setInterfaces } from './interfaces'
 import { versions } from './versions'
@@ -8,17 +8,22 @@ import { getSecretPhrase } from './utils'
 import { yamlFile } from './file-models/config.yml'
 
 // **** Install ****
-const install = sdk.setupInstall(async ({ effects }) => {
-  const name = 'World'
+const install = sdk.setupInstall(
+  async ({ effects }) => {
+    const name = 'World'
 
-  await yamlFile.write(effects, { name })
+    await yamlFile.write(effects, { name })
 
-  await sdk.store.setOwn(
-    effects,
-    sdk.StorePath.secretPhrase,
-    getSecretPhrase(name),
-  )
-})
+    await sdk.store.setOwn(
+      effects,
+      sdk.StorePath.secretPhrase,
+      getSecretPhrase(name),
+    )
+  },
+  async ({ effects }) => {
+    console.log('this happens before all other steps during install')
+  },
+)
 
 // **** Uninstall ****
 const uninstall = sdk.setupUninstall(async ({ effects }) => {})
@@ -33,5 +38,6 @@ export const { packageInit, packageUninit, containerInit } = sdk.setupInit(
   setInterfaces,
   setDependencies,
   actions,
+  initStore,
   exposedStore,
 )
