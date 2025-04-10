@@ -7,23 +7,22 @@ import { actions } from './actions'
 import { getSecretPhrase } from './utils'
 import { yamlFile } from './file-models/config.yml'
 
-// **** Install ****
-const install = sdk.setupInstall(
-  async ({ effects }) => {
-    const name = 'World'
+// **** PreInstall ****
+const preInstall = sdk.setupPreInstall(async ({ effects }) => {
+  const name = 'World'
 
-    await yamlFile.write(effects, { name })
+  await yamlFile.write(effects, { name })
+})
 
-    await sdk.store.setOwn(
-      effects,
-      sdk.StorePath.secretPhrase,
-      getSecretPhrase(name),
-    )
-  },
-  async ({ effects }) => {
-    console.log('this happens before all other steps during install')
-  },
-)
+// **** PostInstall ****
+const postInstall = sdk.setupPostInstall(async ({ effects }) => {
+  const { name } = (await yamlFile.read.const(effects))!
+  await sdk.store.setOwn(
+    effects,
+    sdk.StorePath.secretPhrase,
+    getSecretPhrase(name!),
+  )
+})
 
 // **** Uninstall ****
 const uninstall = sdk.setupUninstall(async ({ effects }) => {})
@@ -33,7 +32,8 @@ const uninstall = sdk.setupUninstall(async ({ effects }) => {})
  */
 export const { packageInit, packageUninit, containerInit } = sdk.setupInit(
   versions,
-  install,
+  preInstall,
+  postInstall,
   uninstall,
   setInterfaces,
   setDependencies,
