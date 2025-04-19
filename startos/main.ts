@@ -27,9 +27,13 @@ export const main = sdk.setupMain(async ({ effects, started }) => {
   return sdk.Daemons.of(effects, started, additionalChecks).addDaemon(
     'primary',
     {
-      subcontainer: { imageId: 'hello-world' },
+      subcontainer: await sdk.SubContainer.of(
+        effects,
+        { imageId: 'hello-world' },
+        sdk.Mounts.of().addVolume('main', null, '/data', false),
+        'hello-world-sub',
+      ),
       command: ['hello-world'],
-      mounts: sdk.Mounts.of().addVolume('main', null, '/data', false),
       ready: {
         display: 'Web Interface',
         fn: () =>
