@@ -30,7 +30,12 @@ export const main = sdk.setupMain(async ({ effects, started }) => {
       subcontainer: await sdk.SubContainer.of(
         effects,
         { imageId: 'hello-world' },
-        sdk.Mounts.of().addVolume('main', null, '/data', false),
+        sdk.Mounts.of().addVolume({
+          volumeId: 'main',
+          subpath: null,
+          mountpoint: '/data',
+          readonly: false,
+        }),
         'hello-world-sub',
       ),
       command: ['hello-world'],
