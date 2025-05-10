@@ -1,3 +1,4 @@
+import { store } from '../file-models/store.json'
 import { sdk } from '../sdk'
 
 export const showSecretPhrase = sdk.Action.withoutInput(
@@ -22,9 +23,7 @@ export const showSecretPhrase = sdk.Action.withoutInput(
       'Below is your secret phrase. Use it to gain access to extraordinary places',
     result: {
       type: 'single',
-      value: await sdk.store
-        .getOwn(effects, sdk.StorePath.secretPhrase)
-        .const(),
+      value: (await store.read().once())?.secretPhrase || '',
       copyable: true,
       qr: true,
       masked: true,

@@ -8,7 +8,7 @@ export const v_0_4_0_0 = VersionInfo.of({
   migrations: {
     up: async ({ effects }) => {
       await sdk.action.requestOwn(effects, setName, 'critical', {
-        reason: 'Needed because how else would people know?',
+        reason: 'How else will people know your name?',
       })
     },
     down: IMPOSSIBLE,

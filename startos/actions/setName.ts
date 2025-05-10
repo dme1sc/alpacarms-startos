@@ -1,6 +1,7 @@
 import { sdk } from '../sdk'
 import { yamlFile } from '../file-models/config.yml'
 import { getSecretPhrase } from '../utils'
+import { store } from '../file-models/store.json'
 
 const { InputSpec, Value } = sdk
 
@@ -32,26 +33,20 @@ export const setName = sdk.Action.withInput(
   inputSpec,
 
   // optionally pre-fill the input form
-  async ({ effects }) => yamlFile.read.const(effects),
+  async ({ effects }) => yamlFile.read().const(effects),
 
   // the execution function
   async ({ effects, input }) => {
-    const yaml = await yamlFile.read.const(effects)
+    const yaml = await yamlFile.read().const(effects)
 
     if (yaml?.name === input.name) return
 
     await Promise.all([
       yamlFile.merge(effects, input),
-      sdk.store.setOwn(
-        effects,
-        sdk.StorePath.secretPhrase,
-        getSecretPhrase(input.name),
-      ),
-      sdk.store.setOwn(
-        effects,
-        sdk.StorePath.nameLastUpdatedAt,
-        new Date().toISOString(),
-      ),
+      store.merge(effects, {
+        secretPhrase: getSecretPhrase(input.name),
+        nameLastUpdatedAt: new Date().toISOString(),
+      }),
     ])
   },
 )

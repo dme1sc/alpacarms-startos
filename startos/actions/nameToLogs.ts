@@ -1,5 +1,6 @@
 import { sdk } from '../sdk'
 import { yamlFile } from '../file-models/config.yml'
+import { store } from '../file-models/store.json'
 
 export const nameToLogs = sdk.Action.withoutInput(
   // id
@@ -12,9 +13,7 @@ export const nameToLogs = sdk.Action.withoutInput(
     warning: null,
     allowedStatuses: 'only-running',
     group: null,
-    visibility: (await sdk.store
-      .getOwn(effects, sdk.StorePath.nameLastUpdatedAt)
-      .const())
+    visibility: (await store.read((s) => s.nameLastUpdatedAt).const(effects))
       ? 'enabled'
       : {
           disabled: 'Cannot print name to logs until you update your name.',
@@ -23,7 +22,7 @@ export const nameToLogs = sdk.Action.withoutInput(
 
   // the execution function
   async ({ effects }) => {
-    const name = (await yamlFile.read.const(effects))!.name
+    const name = (await yamlFile.read().const(effects))!.name
     console.info(`Hello ${name}`)
 
     return {
