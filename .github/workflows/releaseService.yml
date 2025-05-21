@@ -41,7 +41,7 @@ jobs:
           echo "## What's Changed" > change-log.txt
 
           # Find the latest version file in startos/versions/
-          LATEST_VERSION_FILE=$(find startos/versions/ -name "v*.ts" | sort -V | tail -n 1)
+          LATEST_VERSION_FILE=$(find startos/install/versions/ -name "v*.ts" | sort -V | tail -n 1)
           echo "" >> change-log.txt
 
           # Extract release notes using a more precise approach for TypeScript
