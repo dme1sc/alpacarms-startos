@@ -1,6 +1,6 @@
 import { sdk } from '../sdk'
-import { yamlFile } from '../file-models/config.yml'
-import { store } from '../file-models/store.json'
+import { configYaml } from '../fileModels/config.yml'
+import { store } from '../fileModels/store.json'
 import { setName } from './setName'
 
 export const nameToLogs = sdk.Action.withoutInput(
@@ -23,7 +23,7 @@ export const nameToLogs = sdk.Action.withoutInput(
 
   // the execution function
   async ({ effects }) => {
-    const name = (await yamlFile.read().const(effects))!.name
+    const name = (await configYaml.read().const(effects))!.name
     console.info(`Hello ${name}`)
 
     await sdk.action.requestOwn(effects, setName, 'important')

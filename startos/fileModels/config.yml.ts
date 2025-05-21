@@ -5,7 +5,7 @@ const shape = object({
   name: string.optional().onMismatch(undefined),
 })
 
-export const yamlFile = FileHelper.yaml(
+export const configYaml = FileHelper.yaml(
   '/media/startos/volumes/main/config.yml',
   shape,
 )
