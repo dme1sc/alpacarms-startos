@@ -26,8 +26,6 @@ export const nameToLogs = sdk.Action.withoutInput(
     const name = (await configYaml.read().const(effects))!.name
     console.info(`Hello ${name}`)
 
-    await sdk.action.requestOwn(effects, setName, 'important')
-
     return {
       version: '1',
       title: 'Success',
