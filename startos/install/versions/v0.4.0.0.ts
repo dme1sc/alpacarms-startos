@@ -1,6 +1,7 @@
 import { VersionInfo, IMPOSSIBLE } from '@start9labs/start-sdk'
 import { sdk } from '../../sdk'
 import { setName } from '../../actions/setName'
+import { rm } from 'fs/promises'
 
 export const v_0_4_0_0 = VersionInfo.of({
   version: '0.4.0:0',
@@ -10,6 +11,11 @@ export const v_0_4_0_0 = VersionInfo.of({
       await sdk.action.createOwnTask(effects, setName, 'critical', {
         reason: 'How else will people know your name?',
       })
+
+      // delete old start9 dir from 0.3.5.1
+      rm('/media/startos/volumes/main/start9', { recursive: true }).catch(
+        console.error,
+      )
     },
     down: IMPOSSIBLE,
   },
