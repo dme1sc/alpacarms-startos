@@ -6,6 +6,9 @@ const shape = object({
 })
 
 export const configYaml = FileHelper.yaml(
-  '/media/startos/volumes/main/config.yml',
+  {
+    volumeId: 'main',
+    subpath: '/config.yml',
+  },
   shape,
 )
