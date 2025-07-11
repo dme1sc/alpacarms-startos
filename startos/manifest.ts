@@ -10,7 +10,7 @@ export const manifest = setupManifest({
   supportSite: 'https://docs.start9.com/',
   marketingSite: 'https://start9.com/',
   donationUrl: 'https://donate.start9.com/',
-  docsUrl: `https://github.com/Start9Labs/btcpayserver-startos/blob/${current.options.version.replace(':', '_')}/instructions.md`,
+  docsUrl: `https://github.com/Start9Labs/hello-world-startos/blob/${current.options.version.replace(':', '_')}/instructions.md`,
   description: {
     short: 'Bare bones example of a StartOS service',
     long: 'Hello World is a template service that provides examples of basic StartOS features.',

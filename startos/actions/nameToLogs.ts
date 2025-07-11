@@ -1,7 +1,6 @@
 import { sdk } from '../sdk'
 import { configYaml } from '../fileModels/config.yml'
 import { store } from '../fileModels/store.json'
-import { setName } from './setName'
 
 export const nameToLogs = sdk.Action.withoutInput(
   // id
