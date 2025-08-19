@@ -1,9 +1,15 @@
 import { setupManifest } from '@start9labs/start-sdk'
+import { SDKImageInputSpec } from '@start9labs/start-sdk/base/lib/types/ManifestTypes'
+
+const BUILD = process.env.BUILD || ''
+
+const architectures =
+  BUILD === 'x86_64' || BUILD === 'aarch64' ? [BUILD] : ['x86_64', 'aarch64']
 
 export const manifest = setupManifest({
   id: 'hello-world',
   title: 'Hello World',
-  license: 'mit',
+  license: 'MIT',
   wrapperRepo: 'https://github.com/Start9Labs/hello-world-wrapper',
   upstreamRepo: 'https://github.com/Start9Labs/hello-world',
   supportSite: 'https://docs.start9.com/',
@@ -18,12 +24,13 @@ export const manifest = setupManifest({
   volumes: ['main'],
   images: {
     'hello-world': {
-      source: {
-        dockerTag: 'start9/hello-world',
-      },
-    },
+      source: { dockerTag: 'start9/hello-world' },
+      arch: architectures,
+    } as SDKImageInputSpec,
   },
-  hardwareRequirements: {},
+  hardwareRequirements: {
+    arch: architectures,
+  },
   alerts: {
     install: 'Optional alert to display before installing the service',
     update: null,
