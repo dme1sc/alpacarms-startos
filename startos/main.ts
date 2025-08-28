@@ -7,7 +7,7 @@ export const main = sdk.setupMain(async ({ effects, started }) => {
    *
    * In this section, we fetch any resources or run any desired preliminary commands.
    */
-  console.info('Starting Hello World!')
+  console.info('Alpacarms!')
 
   /**
    * ======================== Daemons ========================
@@ -19,16 +19,16 @@ export const main = sdk.setupMain(async ({ effects, started }) => {
   return sdk.Daemons.of(effects, started).addDaemon('primary', {
     subcontainer: await sdk.SubContainer.of(
       effects,
-      { imageId: 'hello-world' },
+      { imageId: 'alpacarms' },
       sdk.Mounts.of().mountVolume({
         volumeId: 'main',
         subpath: null,
         mountpoint: '/data',
         readonly: false,
       }),
-      'hello-world-sub',
+      'alpacarms-sub',
     ),
-    exec: { command: ['hello-world'] },
+    exec: { command: sdk.useEntrypoint() },
     ready: {
       display: 'Web Interface',
       fn: () =>

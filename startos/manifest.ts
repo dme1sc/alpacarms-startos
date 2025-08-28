@@ -7,24 +7,24 @@ const architectures =
   BUILD === 'x86_64' || BUILD === 'aarch64' ? [BUILD] : ['x86_64', 'aarch64']
 
 export const manifest = setupManifest({
-  id: 'hello-world',
-  title: 'Hello World',
-  license: 'MIT',
-  wrapperRepo: 'https://github.com/Start9Labs/hello-world-wrapper',
-  upstreamRepo: 'https://github.com/Start9Labs/hello-world',
-  supportSite: 'https://docs.start9.com/',
-  marketingSite: 'https://start9.com/',
-  donationUrl: 'https://donate.start9.com/',
+  id: 'alpacarms',
+  title: 'Alpacarms',
+  license: 'MIT', // @TODO
+  wrapperRepo: 'https://github.com/dme1sc/alpacarms-wrapper',
+  upstreamRepo: 'https://github.com/dme1sc/alpacarms',
+  supportSite: 'https://github.com/dme1sc/alpacarms',
+  marketingSite: 'https://github.com/dme1sc/alpacarms',
+  donationUrl: 'https://github.com/dme1sc/alpacarms',
   docsUrl:
-    'https://github.com/Start9Labs/hello-world-startos/blob/master/instructions.md',
+    'https://github.com/dme1sc/alpacarms-startos/blob/master/instructions.md',
   description: {
-    short: 'Bare bones example of a StartOS service',
-    long: 'Hello World is a template service that provides examples of basic StartOS features.',
+    short: 'Retail Management System and Point of Sale',
+    long: 'AlpacaRMS is a web-based retail management system and point of sale system.  The application is written in PHP, javascript and uses MariaDB(mysql) as data storage back-end. The interface is simple but intuitive.',
   },
   volumes: ['main'],
   images: {
-    'hello-world': {
-      source: { dockerTag: 'start9/hello-world' },
+    alpacarms: {
+      source: { dockerTag: 'msimbc/alpacarms:alpacarms2.1.11' },
       arch: architectures,
     } as SDKImageInputSpec,
   },
