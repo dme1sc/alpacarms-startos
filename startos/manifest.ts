@@ -10,11 +10,11 @@ export const manifest = setupManifest({
   id: 'alpacarms',
   title: 'Alpacarms',
   license: 'MIT', // @TODO
-  wrapperRepo: 'https://github.com/dme1sc/alpacarms-wrapper',
+  wrapperRepo: 'https://github.com/dme1sc/alpacarms-startos',
   upstreamRepo: 'https://github.com/dme1sc/alpacarms',
-  supportSite: 'https://github.com/dme1sc/alpacarms',
+  supportSite: 'https://alpacarms.org',
   marketingSite: 'https://github.com/dme1sc/alpacarms',
-  donationUrl: 'https://github.com/dme1sc/alpacarms',
+  donationUrl: 'https://alpacarms.org/v4v/',
   docsUrl:
     'https://github.com/dme1sc/alpacarms-startos/blob/master/instructions.md',
   description: {
