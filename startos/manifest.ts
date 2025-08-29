@@ -32,7 +32,7 @@ export const manifest = setupManifest({
     arch: architectures,
   },
   alerts: {
-    install: 'Optional alert to display before installing the service',
+    install: 'Be patient once you click install.  This may take up to 10 minutes.  Check the App Logs.  Wait for the message "NOTICE: ready to handle connections" to appear before opening the weblink.',
     update: null,
     uninstall: null,
     restore: null,

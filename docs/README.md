@@ -1,7 +1,9 @@
 # "AlpacaRMS - Retail Management System and Point of Sale"
-AlpacaRMS version 2.1.11 
+
+AlpacaRMS version 2.1.11
 
 ## 👋 Introduction
+
 ```
 AlpacaRMS is a web-based retail management system and point of sale system. 
 The application is written in PHP, javascript and uses MariaDB(mysql) as data storage back-end.
@@ -58,6 +60,7 @@ More options at [AlpacaRMS](https://alpacarms.org)
 
 The following logs are normal.  **Do not try to login to the app until you see "NOTICE: ready to handle connections"**:
 ```
+
 Starting MySQL server...
 Waiting for MySQL to start...
 2503 14:16:49 mysqld_safe Logging to '/var/log/mysql/error.log'.
@@ -74,6 +77,7 @@ Starting Apache server...
 Starting PHP-FPM...
 [13-May-2025 14:18:41] NOTICE: fpm is running, pid 129
 [13-May-2025 14:18:41] **NOTICE: ready to handle connections**
+
 ```
 Bring up a web browser (Chrome and Firefox are best).
 Go to: http:/localhost:80 (or the port you entered).
