@@ -1,6 +1,6 @@
 # "AlpacaRMS - Retail Management System and Point of Sale"
 
-AlpacaRMS version 2.1.11
+AlpacaRMS version 2.2.0.0
 
 ## 👋 Introduction
 
