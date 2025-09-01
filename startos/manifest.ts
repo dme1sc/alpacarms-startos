@@ -9,14 +9,14 @@ const architectures =
 export const manifest = setupManifest({
   id: 'alpacarms',
   title: 'Alpacarms',
-  license: 'MIT', // @TODO
+  license: 'MIT', // @todo
   wrapperRepo: 'https://github.com/dme1sc/alpacarms-startos',
   upstreamRepo: 'https://github.com/dme1sc/alpacarms',
   supportSite: 'https://alpacarms.org',
   marketingSite: 'https://github.com/dme1sc/alpacarms',
   donationUrl: 'https://alpacarms.org/v4v/',
   docsUrl:
-    'https://github.com/dme1sc/alpacarms-startos/blob/master/README.md',
+    'https://github.com/dme1sc/alpacarms-startos/blob/master/instructions.md',
   description: {
     short: 'Retail Management System and Point of Sale',
     long: 'AlpacaRMS is a web-based retail management system and point of sale system.  The application is written in PHP, javascript and uses MariaDB(mysql) as data storage back-end. The interface is simple but intuitive.',
@@ -24,7 +24,7 @@ export const manifest = setupManifest({
   volumes: ['main'],
   images: {
     alpacarms: {
-      source: { dockerTag: 'msimbc/alpacarms:alpacarms2.1.11' },
+      source: { dockerTag: 'msimbc/alpacarms:alpacarms2.2.0.0' },
       arch: architectures,
     } as SDKImageInputSpec,
   },
