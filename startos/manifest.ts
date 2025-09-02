@@ -25,7 +25,7 @@ export const manifest = setupManifest({
   volumes: ['main'],
   images: {
     alpacarms: {
-      source: { dockerTag: 'msimbc/alpacarms:alpacarms2.2.0.0' },
+      source: { dockerTag: 'msimbc/alpacarms:alpacarms2.2.1.0' },
       arch: architectures,
     } as SDKImageInputSpec,
   },
