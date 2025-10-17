@@ -1,7 +1,7 @@
 <p align="center">
   <img src="icon.png" alt="Project Logo" width="21%">
   <BR>
-  AlpacaRMS v2.2.0.0 - Retail Management System and Point of Sale
+  AlpacaRMS v2.2.12 - Retail Management System and Point of Sale
 </p>
 # "AlpacaRMS - Retail Management System and Point of Sale"
 

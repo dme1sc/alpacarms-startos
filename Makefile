@@ -1,3 +1,6 @@
+SHELL := /bin/bash
+export PATH := $(HOME)/.local/bin:$(PATH)
+
 PACKAGE_ID := $(shell awk -F"'" '/id:/ {print $$2}' startos/manifest.ts)
 INGREDIENTS := $(shell start-cli s9pk list-ingredients 2>/dev/null)
 
