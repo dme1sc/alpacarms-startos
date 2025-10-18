@@ -1,7 +1,7 @@
 <p align="center">
   <img src="icon.png" alt="Project Logo" width="21%">
   <BR>
-  AlpacaRMS v2.2.12 - Retail Management System and Point of Sale
+  AlpacaRMS v2.2.13 - Retail Management System and Point of Sale
 </p>
 # "AlpacaRMS - Retail Management System and Point of Sale"
 
@@ -83,7 +83,7 @@ Starting PHP-FPM...
 
 ```
 Bring up a web browser (Chrome and Firefox are best).
-Go to: http:/localhost:80 (or the port you entered).
+Go to: http://localhost:80 (or the port you entered).
 The AlpacaRMS login will appear.
 You will login to upgrade the system, then login a second time to access the system as normal.
 

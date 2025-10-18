@@ -25,7 +25,7 @@ export const manifest = setupManifest({
   volumes: ['main'],
   images: {
     alpacarms: {
-      source: { dockerTag: 'msimbc/alpacarms:alpacarms2.2.12' },
+      source: { dockerTag: 'msimbc/alpacarms:alpacarms2.2.13' },
       arch: architectures,
     } as SDKImageInputSpec,
   },
@@ -33,7 +33,7 @@ export const manifest = setupManifest({
     arch: architectures,
   },
   alerts: {
-    install: 'Be patient once you click install.  This may take up to 10 minutes.  Check the App Logs.  Wait for the message "NOTICE: ready to handle connections" to appear before opening the weblink.',
+    install: 'Be patient once you click install.  This may take up to 5 minutes.  Check the App Logs.  Wait for the message "NOTICE: ready to handle connections" to appear before opening the weblink.',
     update: null,
     uninstall: null,
     restore: null,
